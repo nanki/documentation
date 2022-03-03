@@ -94,7 +94,7 @@
     contents:
 
     - action: integrations
-      branch: master
+      branch: cswatt/zscaler-int
       globs:
       - "*/metadata.csv"
       - "*/manifest.json"
