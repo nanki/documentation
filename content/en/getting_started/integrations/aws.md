@@ -40,9 +40,7 @@ This process can be repeated for as many AWS accounts as necessary, or you can a
 
 ## Prerequisites
 
-Before getting started, ensure you have the following prerequisites:
-
-1. An [AWS][7] account. Your AWS user needs the following IAM permissions to successfully run the CloudFormation template:
+Before getting started, ensure you have an [AWS][7] account. Your AWS user needs the following IAM permissions to successfully run the CloudFormation template:
 
     * cloudformation:CreateStack
     * ec2:DescribeSecurityGroups
@@ -77,30 +75,30 @@ Before getting started, ensure you have the following prerequisites:
 ## Setup
 
 
-2. From the AWS tile on the [Integrations page][8] in your Datadog account, select the Datadog products you wish to integrate with this AWS Account. This selects the correct default settings for integrating data from this AWS account for those products. These settings can be changed in the future if needed.
+1. From the AWS tile on the [Integrations page][8] in your Datadog account, select the Datadog products you wish to integrate with this AWS Account. This selects the correct default settings for integrating data from this AWS account for those products. These settings can be changed in the future if needed.
 {{< img src="getting_started/integrations/cloudformation-setup.png" alt="The Datadog AWS integration tile showing the options for establishing the integration. The Role Delegation tab is highlighted.">}}
 
-3. Select the AWS Region where the CloudFormation stack will be launched. This also sets where to create the Datadog Lambda Forwarder for sending AWS logs to Datadog (if you selected Log Management).
+2. Select the AWS Region where the CloudFormation stack will be launched. This also sets where to create the Datadog Lambda Forwarder for sending AWS logs to Datadog (if you selected Log Management).
 
     **Note**: CloudWatch metrics are collected from ALL AWS regions you are using regardless of the region you select.
 
-4. Select or create the Datadog API Key used to send data from your AWS account to Datadog.
+3. Select or create the Datadog API Key used to send data from your AWS account to Datadog.
 
-5. Click "Launch CloudFormation Template". This opens the AWS Console and loads the CloudFormation stack. All the parameters are filled in based on your selections in the prior Datadog form, so you do not need to edit those unless desired.
+4. Click "Launch CloudFormation Template". This opens the AWS Console and loads the CloudFormation stack. All the parameters are filled in based on your selections in the prior Datadog form, so you do not need to edit those unless desired.
 **Note:** The `DatadogAppKey` parameter enables the CloudFormation stack to make API calls to Datadog to add and edit the Datadog configuration for this AWS account. The key is automatically generated and tied to your Datadog account.
 {{< img src="getting_started/integrations/params.png" alt="The AWS CloudFormation create-stack page showing the Stack name as datadog, IAMRoleName as DatadogIntegrationRole, ExternalId as an obfuscated value ending in be46, DdApiKey as an obfuscated value.">}}
 
-6. Check the required boxes from AWS and click `Create stack`: 
+5. Check the required boxes from AWS and click `Create stack`: 
     {{< img src="getting_started/integrations/cloudformation-complete.png" alt="The AWS CloudFormation Stacks page showing the four completed stacks under the 'Stacks' column along the left hand side of the page. The stacks are datadog-DatadogIntegrationRoleStack, datadog-DatadogPolicyMacroStack, datadog-ForwarderStack, and datadog. Each stack shows the timestamp of creation and a green checkmark with CREATE_COMPLETE. The 'datadog' stack and is highlighted and displaying the 'Events' tab. There are 9 events listed with their Timestamp, Logical ID, Status, and Status reason. These events reference the different stages of creation for each of the stacks.">}}
 This launches the creation process for the Datadog stack along with three nested stacks. This could take several minutes. Ensure that the stack is successfully created before proceeding.
 
-7. After the Stack is created, go back to the AWS integration tile in Datadog and find the box for the new account you created. Click "Refresh to Check Status" to see a success message at the top of the page, along with the new account visible on the page with the relevant details.
+6. After the Stack is created, go back to the AWS integration tile in Datadog and find the box for the new account you created. Click "Refresh to Check Status" to see a success message at the top of the page, along with the new account visible on the page with the relevant details.
 
     {{< img src="getting_started/integrations/new-account.png" alt="The AWS integration tile in the Datadog account. The left hand side shows that the EC2 automuting option is enabled. There is a section titled 'Limit metric collection by AWS Service' which displays the sub-integrations associated with the Datadog AWS integration. These are ApiGateway, ApplicationELB, AppRunner, AppStream, AppSync, Athena, AutoScaling, Billing, Budgeting, CertificateManager, CloudFront, CloudHSM, CloudSearch, CodeBuild, Cognito, and Connect. There is a heading which states 'Turning on sub-integrations can affect your CloudWatch API usage. See our AWS FAQ for more info.'. All boxes are displayed as checked. Below this is another section called 'Other options'. There are two checkboxes here, Collect CloudWatch alarms and Collect custom metrics. Both options are checked.' On the right hand side of the page there is a section showing the settings for the connected AWS account. The Account ID is displayed as an obfuscated value. The AWS Role name is displayed as DatadogIntegrationRole.">}}
 
     Depending on which AWS services you use and your use case for monitoring, there are multiple options within the integration tile to specify the data to be collected. For example, you can limit data collection based on AWS service, namespace, or tags. Additionally, you can choose to mute monitor notifications. For example, terminations triggered manually or by autoscaling with [EC2 automuting][9] enabled. If needed, enable [Alarm Collection][10] to send your CloudWatch alarms to the Datadog [Event Stream][11] and choose whether to collect custom metrics.
 
-8. Wait up to 10 minutes for data to start being collected, and then view the out-of-the-box [AWS overview dashboard][12] to see metrics sent by your AWS services and infrastructure:
+7. Wait up to 10 minutes for data to start being collected, and then view the out-of-the-box [AWS overview dashboard][12] to see metrics sent by your AWS services and infrastructure:
 {{< img src="getting_started/integrations/aws-dashboard.png" alt="The AWS overview dashboard in the Datadog account. On the left is the AWS logo and an AWS events graph showing 'No matching entries found'. In the center are graphs related to EBS volumes with numerical data displayed and a heat map showing consistent data. Along the right are graphs related to ELBs showing numerical data as well as a timeseries graph showing spiky data from three sources.">}}
 
 ## Enable integrations for individual AWS service
