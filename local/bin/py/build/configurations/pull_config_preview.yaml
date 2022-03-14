@@ -60,7 +60,7 @@
     contents:
 
     - action: integrations
-      branch: bryce/update-manual-setup-steps
+      branch: bryce/update-setup-for-us3
       globs:
       - integration/*/*_metadata.csv
       - integration/*/manifest.json
