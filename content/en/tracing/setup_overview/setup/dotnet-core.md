@@ -384,9 +384,10 @@ Your logger needs to have a `source` that sets the `trace_id` mapping correctly.
 : **TracerSettings property**: `GlobalSamplingRate` <br>
 Enables ingestion rate control.
 
-`DD_MAX_TRACES_PER_SECOND`
+`DD_TRACE_RATE_LIMIT`
 : **TracerSettings property**: `MaxTracesSubmittedPerSecond` <br>
-The number of traces allowed to be submitted per second.
+The number of traces allowed to be submitted per second (deprecates `DD_MAX_TRACES_PER_SECOND`). <br>
+**Default**: `100` when `DD_TRACE_SAMPLE_RATE` is set. Otherwise, delegates rate limiting to the Datadog Agent. <br>
 
 `DD_TRACE_GLOBAL_TAGS`
 : **TracerSettings property**: `GlobalTags`<br>
