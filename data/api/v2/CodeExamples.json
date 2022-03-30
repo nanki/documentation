@@ -400,6 +400,13 @@
       "description": "List tag configurations with a tag filter returns \"Success\" response"
     }
   ],
+  "SubmitMetrics": [
+    {
+      "group": "metrics",
+      "suffix": "",
+      "description": "Submit metrics returns \"Payload accepted\" response"
+    }
+  ],
   "ListProcesses": [
     {
       "group": "processes",
